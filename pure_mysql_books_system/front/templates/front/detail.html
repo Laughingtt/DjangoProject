@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.1 }}</title>
+</head>
+<body>
+<h2>书籍详细信息</h2><br>
+<form action="" method="post">
+    <input type="hidden" name="res" value="update">
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>书名:</td>
+                <td><input type="text" name="name" value={{ book.1 }}></td>
+            </tr>
+                    <tr>
+                <td>作者:</td>
+                <td><input type="text" name="author" value={{ book.2 }}></td>
+            </tr>
+        <tr>
+                <td>内容:</td>
+                <td><input type="text" name="content" value={{ book.3 }}></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <input type="submit" value="更新">
+    </form>
+<br>
+<form action="" method="post">
+    <input type="hidden" name="res" value="delete">
+    <input type="submit" value="删除">
+</form>
+
+<br>
+<br>
+<br>
+<h3><a href="{% url 'front:main' %}">返回首页</a></h3>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有书本信息</title>
+</head>
+<body>
+    <ol>
+        {% for i in name %}
+        <li><a href="{% url 'front:detail' page=i.0 %}">{{ i.1 }}</a></li>
+        {% endfor %}
+    </ol>
+<br>
+<br>
+<br>
+<h3><a href="{% url 'front:main' %}">返回首页</a></h3>
+</body>
+</html>
