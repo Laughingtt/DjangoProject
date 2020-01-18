@@ -1,0 +1,178 @@
+/*初始化浏览器默认边距和内填充*/
+*{
+margin:0;
+padding:0;
+}
+/*去掉ul标签的圆点*/
+ul{
+list-style-type:none;
+}
+/*去掉a标签的下划线*/
+a{
+font:white;
+text-decoration:none;
+}
+/*鼠标触碰到a标签时的颜色*/
+a:hover{
+background-color:orange;
+}
+/*清除浮动的方法，需要清除时，可以直接使用属性clearfix,使用后会在下一行排列*/
+.clearfix:after{
+content:"";
+display:block;
+clear:both;
+}
+/*固定导航栏的背景色和大小*/
+.bar{
+display:block;
+width:100%;
+height:50px;
+background-color:grey;
+position:fixed;
+top:0;
+}
+/*调整内容*/
+.content{
+width:1226px;
+margin:15px auto;
+}
+/*左飘*/
+.left_bar_li{
+float:left;
+padding-right:15px;
+}
+/*右飘*/
+.right_bar_li{
+float:right;
+padding-left:15px;
+}
+/*设置主文框架*/
+.main{
+width:1226px;
+margin:0 auto;
+}
+/*将内容下移*/
+.header{
+margin:50px auto;
+}
+/*左飘*/
+.cargo{
+float:left;
+padding-right:15px;
+
+}
+
+.top_menu{
+padding-top:20px;
+}
+
+.logo{
+margin-right:15px;
+}
+/*设定搜索框*/
+.search{
+    width: 300px;
+    height: 50px;
+    float:right;
+}
+
+.search input {
+    border: 1px solid #e0e0e0;
+    width: 80%;
+}
+.search button {
+    border: 1px solid #e0e0e0;
+    width: 19%;
+}
+/*左飘*/
+.search input,
+.search button {
+    padding: 10px 0;
+    display: block;
+    float: left;
+}
+
+.left_menu{
+width: 234px;
+float:left;
+background-color: #0a3651;
+padding: 20px 0;
+}
+
+.left_menu a{
+    color: white;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 25px;
+}
+
+.right_menu {
+width: 992px;
+float:right;
+}
+
+.one , .two , .three, .four{
+float:left;
+margin:30px 10px 0 0;
+}
+
+h2{
+margin:15px 0;
+}
+
+.flash_left{
+float:left;
+margin:15px 10px 20px 0;
+}
+
+.comment1{
+width:296px;
+background-color:#f1ece4;
+float:left;
+margin-right:10px;
+}
+
+.goods_comment{
+padding:10px 10px;
+}
+
+.from{
+    height: 18px;
+    margin: 0 48px 8px;
+    padding: 0 10px 0 0;
+    font-size: 12px;
+}
+
+.price {
+    color: red
+    font-weight:bolder;
+    margin: 0 48px 8px;
+    padding: 0 10px 0 0;
+}
+
+.over{
+margin-top:50px;
+width:100%;
+height:70px;
+background-color:#e8e1e1;
+}
+
+.over_li>li{
+float:left;
+padding:30px;
+
+}
+
+.over_li .fir{
+margin-left:300px;
+}
+
+.over_li a{
+border-right:1px solid black;
+padding-right:30px;
+}
+/*去掉右边框*/
+.over_li .las{
+border-right:none;
+}
