@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+<div id="particles-js">
+    <div class="login">
+        <div class="login-top">
+            登录
+        </div>
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="{% static 'imgs/name.png'%}"></div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="login-center-input">
+                    <input type="text" name="username" value="admin" placeholder="请输入您的用户名" onfocus="this.placeholder=''"
+                           onblur="this.placeholder='请输入您的用户名'">
+                    <div class="login-center-input-text">用户名</div>
+                </div>
+        </div>
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="{% static 'imgs/password.png'%}"></div>
+            <div class="login-center-input">
+                <input type="password" name="password" value="" placeholder="请输入您的密码" onfocus="this.placeholder=''"
+                       onblur="this.placeholder='请输入您的密码'">
+                <div class="login-center-input-text">密码</div>
+            </div>
+        </div>
+        <div style="text-align: center">
+            <button class="login-button">登录</button>
+        </div>
+        <div style="text-align: right; margin-top:50px;margin-right:50px;font-size:18px;">
+            <a href="{% url 'change_pwd'%}" style="margin-right:120px">修改密码</a>
+            <a href="{% url 'register'%}">注册</a>
+        </div>
+    </div>
+    </form>
+    <div class="sk-rotating-plane"></div>
+    <canvas class="particles-js-canvas-el" width="616" height="754" style="width: 100%; height: 100%;"></canvas>
+</div>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        input{
+            width:300px;
+            height:30px;
+            padding:10px;
+        }
+        .i5{
+            font-size:20px;
+        }
+        span{
+            margin-right:50px;
+        }
+        button{
+            margin-top:30px;
+            width:60px;
+            height:35px;
+            text-align:center;
+            margin-right:50px;
+
+        }
+        span{
+            color:red;
+        }
+        .ii{
+             margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+<div class="i" style="width:500px;margin:50px auto;">
+    <h2>注册页面</h2>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        <div class="i1 ii">{{ form_obj.username }}
+        </div>
+        <span>{{ form_obj.username.errors.0 }}</span>
+        <div class="i2 ii">{{ form_obj.password }}
+        </div>
+        <span>{{ form_obj.password.errors.0 }}</span>
+        <div class="i3 ii">{{ form_obj.re_password }}
+        </div>
+        <span>{{ form_obj.re_password.errors.0 }}</span>
+        <div class="i4 ii">{{ form_obj.name }}
+        </div>
+        <span>{{ form_obj.name.errors.0 }}</span>
+        <div class="i5 ii">部门:{{ form_obj.department }}
+        </div>
+        <span>{{ form_obj.department.errors.0 }}</span>
+        <div class="submit">
+            <button>提交</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<script>
+
+    $('input').focus(function () {
+        $('span').text('')
+    })
+</script>
+</body>
+</html>

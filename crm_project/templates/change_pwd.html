@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+    <style>
+        {
+            margin:0;
+
+        }
+        input{
+            width:300px;
+            height:30px;
+            margin-bottom:20px;
+            padding:10px;
+        }
+        button{
+            width:60px;
+            height:35px;
+            text-align:center;
+            margin-right:50px;
+
+        }
+        span{
+            color:red;
+
+        }
+        .i5{
+            margin-bottom:15px;
+        }
+    </style>
+</head>
+<body>
+<div class="i" style="width:500px;margin:50px auto;">
+    <h2>修改密码页面</h2>
+<form action="" method="post" >
+    {% csrf_token %}
+<div class="i1"><input type="text" name="username" value="" placeholder="请输入账号"></div>
+<div class="i2"><input type="password" name="password" value="" placeholder="请输入密码"></div>
+<div class="i3"><input type="password" name="new_password" value="" placeholder="请输入您的新密码"></div>
+<div class="i4"><input type="password" name="re_new_password" value="" placeholder="请再次输入您的新密码"></div>
+    <div class="i5">
+        <span>{{ error }}</span>
+    </div>
+    <button>提交</button>
+</form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<script>
+
+    $('input').focus(function () {
+        $('span').text('')
+    })
+</script>
+</body>
+</html>

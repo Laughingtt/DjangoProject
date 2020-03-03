@@ -1,0 +1,21 @@
+{% extends 'crm/layout.html' %}
+
+{% block css%}
+<style>
+
+</style>
+{% endblock %}
+
+{% block content%}
+{% for field in customer_obj %}
+
+
+
+    <label for="{{ field.id_for_label }}"
+           class="col-sm-2 control-label"> {{ field.label }}</label>
+        {{ field }}
+
+{% endfor %}
+
+{% endblock %}
+

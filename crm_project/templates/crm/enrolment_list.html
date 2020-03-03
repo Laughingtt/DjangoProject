@@ -1,0 +1,88 @@
+{% extends 'crm/layout.html' %}
+{% block css %}
+<style>
+        th, tr {
+            text-align: center;
+        }
+
+
+
+</style>
+{% endblock%}
+
+{% block content %}
+{% if ret %}
+<h2>{{ ret }}</h2>
+{% endif %}
+<div>
+    <form action="" class="form-inline pull-right" method="get">
+        <input type="text" name="query" class="form-control">
+        <button class="btn btn-sm btn-primary">搜索 <i class="fa fa-search"></i></button>
+    </form>
+</div>
+<form action="" method="post" class="form-inline">
+    {% csrf_token %}
+    <select name="action" class="form-control" style="margin: 5px 0">
+        <option value="">请选择</option>
+        <option value="multi_delte">删除</option>
+<!--        <option value="multi_apply">放入私户</option>-->
+<!--        <option value="multi_pub">放入公户</option>-->
+        {#
+        <option value=""></option>
+        #}
+    </select>
+    <button class="btn btn-success btn-sm">提交</button>
+    <table class="table table-condensed table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>选择</th>
+            <th>序号</th>
+            <th>报名原因</th>
+            <th>期望</th>
+            <th>同意协议</th>
+            <th>报名时间</th>
+            <th>客户名称</th>
+            <th>学校</th>
+            <th>所报班级</th>
+            <th>编辑</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for field in enrolment_obj %}
+        <tr>
+            <td><input type="checkbox" name="id" value="{{ field.id }}"></td>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ field.why_us }}</td>
+            <td>{{ field.your_expectation }}</td>
+            <td>{{ field.contract_agreed }}</td>
+            <td>{{ field.enrolled_date }}</td>
+            <td>{{ field.customer }}</td>
+            <td>{{ field.school }}</td>
+            <td>{{ field.enrolment_class|default:'暂无' }}</td>
+            <td><a href="{% url 'edit_enrolment' field.id %}?{{ query_params }}"><i class="fa fa-edit fa-fw"></i></a></td>
+
+        </tr>
+        {% endfor %}
+        {% if not enrolment_obj %}
+        <h2 style="color:red;text-align:center;">还没有报名记录</h2>
+        {% endif %}
+
+        </tbody>
+    </table>
+</form>
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <!--            {% for page in pagination %}-->
+        <!--            <li><a href="/crm/page/?page={{ page }}">{{ page }}</a></li>-->
+        <!--            {% endfor %}-->
+        {{ html_str }}
+    </ul>
+
+</nav>
+
+</div>
+<div style="position:fixed;color:grey;bottom:30px;right:30px;">    <p >符合条件的数据有&nbsp{{ len_obj }}&nbsp条</p>
+</div>
+{% endblock %}
+

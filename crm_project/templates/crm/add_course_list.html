@@ -1,0 +1,55 @@
+{% extends 'crm/layout.html' %}
+
+{% block css%}
+<style>
+
+</style>
+{% endblock %}
+
+{% block content%}
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    {% if request.path_info == '/crm/add_class_list/' %}
+    <div class="panel-heading">添加班级</div>
+    {% else %}
+    <div class="panel-heading">修改班级信息</div>
+    {% endif %}
+
+    <div class="panel-body">
+
+
+        <div class="col-sm-8 col-sm-offset-2 ">
+
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {% for field in course_obj %}
+
+                <div class="form-group row {% if field.errors %}has-error{% endif %} ">
+
+                    <label for="{{ field.id_for_label }}"
+                           class="col-sm-2 control-label"> {{ field.label }}</label>
+                    <div class="col-sm-10">
+                        {{ field }}
+                        <span class="help-block">
+                            {{ field.errors.0 }}
+                        </span>
+                    </div>
+                </div>
+
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}

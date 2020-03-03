@@ -1,0 +1,86 @@
+{% extends 'crm/layout.html' %}
+{% block css %}
+<style>
+        th, tr {
+            text-align: center;
+        }
+
+
+
+
+</style>
+{% endblock%}
+
+{% block content %}
+{% if ret %}
+<h2>{{ ret }}</h2>
+{% endif %}
+<!--{{ add_btn }}-->
+<!--<a href="{% url 'add_customer' %}?{{ query_params }}" class="btn btn-primary btn-sm">添加</a>-->
+<a href="{% url 'add_course_list'%}" class="btn btn-primary btn-sm">添加</a>
+<div>
+    <form action="" class="form-inline pull-right" method="get">
+        <input type="text" name="query" class="form-control">
+        <button class="btn btn-sm btn-primary">搜索 <i class="fa fa-search"></i></button>
+    </form>
+</div>
+<form action="" method="post" class="form-inline">
+    {% csrf_token %}
+    <select name="action" class="form-control" style="margin: 5px 0">
+        <option value="">请选择</option>
+        <option value="multi_delte">删除</option>
+        <option value="multi_init">初始化班级信息</option>
+    </select>
+    <button class="btn btn-success btn-sm">提交</button>
+    <table class="table table-condensed table-hover table-bordered">
+        <thead>
+        <tr>
+            <th>选择</th>
+            <th>序号</th>
+            <th>课程</th>
+            <th>上课时间</th>
+            <th>作业标题</th>
+            <th>得分点</th>
+            <th>班级</th>
+            <th>老师</th>
+            <th>编辑</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for course in course_obj %}
+        <tr>
+            <td><input type="checkbox" name="id" value="{{ course.id }}"></td>
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'study_list' course.id %}">{{ course.day_num }}-{{ course.course_title }}</a></td>
+            <td>{{ course.date }}</td>
+            <td>{{ course.homework_title }}</td>
+            <td>{{ course.scoring_point }}</td>
+            <td>{{ course.re_class }}</td>
+            <td>{{ course.teacher }}</td>
+
+            <td><a href="{% url 'edit_course_list' course.id %}"><i class="fa fa-edit fa-fw"></i></a>
+            </td>
+
+        </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+</form>
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <!--            {% for page in pagination %}-->
+        <!--            <li><a href="/crm/page/?page={{ page }}">{{ page }}</a></li>-->
+        <!--            {% endfor %}-->
+        {{ html_str }}
+    </ul>
+
+</nav>
+
+</div>
+<div style="position:fixed;color:grey;bottom:30px;right:30px;"><p>符合条件的数据有&nbsp{{ len_obj }}&nbsp条</p>
+</div>
+{% endblock %}
+
