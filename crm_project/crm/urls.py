@@ -40,6 +40,6 @@ urlpatterns = [
 
 
 
-    url(r'^page/',views.page,name='page'),
-    url(r'^test/',views.test,name='test'),
+    # url(r'^page/',views.page,name='page'),
+    # url(r'^test/',views.test,name='test'),
 ]

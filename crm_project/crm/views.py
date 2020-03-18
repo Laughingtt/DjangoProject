@@ -14,7 +14,7 @@ from django.http import QueryDict  # request.GET返回的是QueryDict
 from django.db import transaction
 import time
 from django.conf import settings  # 导入自定义setting中的变量
-
+from rbac.server.init_permission import init_permission
 
 def login(request):
     if request.method == "POST":
@@ -24,6 +24,7 @@ def login(request):
         ok = auth.authenticate(username=username, password=password)
         if ok:
             auth.login(request, ok)
+            init_permission(request, ok)
             return redirect(reverse('customer'))
 
     return render(request, 'login.html')

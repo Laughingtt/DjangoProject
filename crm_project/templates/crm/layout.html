@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.3.7/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+
     <title>CRM管理系统</title>
     {% block css %}
 
@@ -50,14 +52,17 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="{% url 'all_customer' %}">所有客户</a></li>
-                <li><a href="{% url 'my_customer'%}">我的客户</a></li>
-                <li><a href="{% url 'consult_list' 0 %}">跟进记录</a></li>
-                <li><a href="{% url 'enrolment_list' 0 %}">报名表</a></li>
-                <li><a href="{% url 'class_list' %}">班级信息</a></li>
+                <!--                <li><a href="{% url 'all_customer' %}">所有客户</a></li>-->
+                <!--                <li><a href="{% url 'my_customer'%}">我的客户</a></li>-->
+                <!--                <li><a href="{% url 'consult_list' 0 %}">跟进记录</a></li>-->
+                <!--                <li><a href="{% url 'enrolment_list' 0 %}">报名表</a></li>-->
+                <!--                <li><a href="{% url 'class_list' %}">班级信息</a></li>-->
+                {% load rbac %}
+                {% menu request %}
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {% breadcrumb request %}
             {% block content %}
 
             {% endblock %}
@@ -67,6 +72,7 @@
 
 <script src="{% static 'js/jQuery.js' %}"></script>
 <script src="{% static 'plugins/bootstrap-3.3.7/js/bootstrap.js' %}"></script>
+<script src="{% static 'js/menu.js' %}"></script>
 
 {% block js %}
 

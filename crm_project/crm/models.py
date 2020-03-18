@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 # from multiselectfield import MultiSelectField
 from django.shortcuts import reverse
 from django.utils.safestring import mark_safe  # 将html内容返回到前端时，用此方法
+from rbac.models import User
 
 course_choices = (('LinuxL', 'Linux中高级'),
                   ('PythonFullStack', 'Python高级全栈开发'),)
@@ -268,6 +269,7 @@ class CourseRecord(models.Model):
     def __str__(self):
         return str(self.course_title)
 
+
 class StudyRecord(models.Model):
     """
     学习记录
@@ -287,6 +289,7 @@ class StudyRecord(models.Model):
 
     def __str__(self):
         return str(self.student)
+
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -385,6 +388,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     memo = models.TextField('备注', blank=True, null=True, default=None)
     date_joined = models.DateTimeField(auto_now_add=True)
+    user = models.OneToOneField(User, null=True, blank=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name']

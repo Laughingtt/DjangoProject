@@ -1,11 +1,9 @@
 {% extends 'crm/layout.html' %}
 {% block css %}
 <style>
-        th, tr {
-            text-align: center;
-        }
-
-
+    th, tr {
+        text-align: center;
+    }
 
 
 </style>
@@ -17,7 +15,12 @@
 {% endif %}
 <!--{{ add_btn }}-->
 <!--<a href="{% url 'add_customer' %}?{{ query_params }}" class="btn btn-primary btn-sm">添加</a>-->
+<!--精确定位到按钮级别，如果当前url在权限内，返回下一个页面-->
+{% load rbac %}
+{% if request|has_permission:'add_customer' %}
 <a href="{% url 'add_customer' %}?{{ query_params }}" class="btn btn-primary btn-sm">添加</a>
+{% endif %}
+<!---->
 <div>
     <form action="" class="form-inline pull-right" method="get">
         <input type="text" name="query" class="form-control">
@@ -63,7 +66,10 @@
             <th>跟进记录</th>
             <th>报名记录</th>
             {% endif %}
+
+            {% if request|has_permission:'edit_customer' %}
             <th>编辑</th>
+            {% endif %}
         </tr>
         </thead>
         <tbody>
@@ -89,11 +95,14 @@
             <td>{{ customer.show_classes }}</td>
             {% if request.path_info == '/crm/my_customer/' %}
             <td><a href="{% url 'consult_list' customer.id %}">查看跟进</a></td>
-<!--            <td><a href="{% url 'add_enrolment' customer.id %}?{{ query_params }}">添加报名</a></td>-->
-<!--            <td><a href="{% url 'add_enrolment' customer.id %}?{{ query_params }}">添加报名</a></td>-->
+            <!--            <td><a href="{% url 'add_enrolment' customer.id %}?{{ query_params }}">添加报名</a></td>-->
+            <!--            <td><a href="{% url 'add_enrolment' customer.id %}?{{ query_params }}">添加报名</a></td>-->
             <td>{{ customer.enroll_link }}</td>
             {% endif %}
+
+            {% if request|has_permission:'edit_customer' %}
             <td><a href="{% url 'edit_customer' customer.id %}?{{ query_params }}"><i class="fa fa-edit fa-fw"></i></a>
+            {% endif %}
             </td>
 
         </tr>
