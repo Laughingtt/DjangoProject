@@ -136,6 +136,7 @@ PERMISSION_SESSION_KEY = 'permissions'
 MENU_SESSION_KEY = 'menus'
 WHITE_URL_LIST = [
     r'/login/$',
+    r'/v_code/$',
     r'/change_pwd/$',
     r'/register/$',
     r'^/logout/$',

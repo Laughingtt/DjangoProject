@@ -1,0 +1,142 @@
+day84
+1. CRM
+	1. CRM 
+		客户管理系统   - 业务
+		
+	2. 功能：
+		- 登录
+		- 注册
+		- 注销
+		- 修改密码
+
+		- 销售
+			- 客户列表
+				- 公户
+				- 私户 
+				- 添加、编辑客户 
+				- 公、私户的转换 
+				
+			- 跟进记录
+				- 添加、编辑客跟进记录
+				
+			- 报名记录
+				- 添加、编辑报名记录
+			- 缴费记录
+				- 添加、编辑缴费记录
+				
+		- 班主任
+			- 班级管理
+				- 展示
+				- 增加和编辑
+			- 课程记录
+				- 展示
+				- 增加和编辑 
+			- 学习记录
+				- 展示和编辑
+					- modelformset
+						{{ form_set.management_form }}
+						{{ form.id }}
+				- 批量添加
+				
+			
+2. 权限系统
+	- 权限信息的记录
+		6张表 
+			菜单表
+				- title
+				- icon
+				- weight 
+			
+			权限表
+				- url
+				- title
+				#  - is_menu  一级菜单使用
+				#  - icon 	  一级菜单使用
+				- menu     外键     菜单表
+				- parent   外键     权限表
+				- name    URL别名 
+				
+			角色表
+				- name 
+				- permissions 多对多  - 权限表
+				
+			用户表
+				- name
+				- pwd 
+				- roles   多对多 - 角色表
+				
+			
+			
+			
+3.  权限系统的应用
+	1. 拷贝rbac 到新项目中
+	
+	2. 注册rbac APP 以及配置信息
+	
+		PERMISSION_SESSION_KEY = 'permissions'
+		MENU_SESSION_KEY = 'menus'
+		WHITE_URL_LIST = [
+			r'/login/$',
+			r'^/logout/$',
+			r'^/reg/$',
+			r'^/admin/.*',
+		]
+	3. 数据库迁移 
+		删除原有的迁移文件的记录
+		执行命令
+		
+	4. 在根目录下的urls.py中添加rbac的相关URL
+		# 权限的url
+		url(r'rbac/', include('rbac.urls',namespace='rbac')),
+		
+	5. 录入权限信息
+		- 角色管理
+		- 菜单管理
+		- 权限管理
+			- 录入原系统的URL
+			- 录入rbac的URL
+				- 权限批量操作的视图中ignore_namespace_list中去掉rbac
+					 # 获取路由系统中所有URL
+					 router_dict = get_all_url_dict(ignore_namespace_list=['admin'])
+			
+	6. 分配权限
+		- 用户关联
+			from rbac.models import User
+			user = models.OneToOneField(User, null=True, blank=True)
+			
+		- 给用户分角色
+		- 给角色分权限
+		
+	7. 登录应用权限
+		- 登录成功后执行init_permission(request, obj) 
+		- 修改init_permission
+			user   ——》 user.user 
+		- 应用权限校验中间件
+			 'rbac.middlewares.rbac.PermissionMiddleware',
+			 
+			 
+	8. 应用二级菜单和面包屑导航
+		注意模板 layout
+			有block  css  js content 
+			
+		- 二级菜单
+			    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+				{% load rbac %}
+                {% menu request %}
+				<script src="{% static 'js/menu.js' %}"></script>
+				
+		- 面包屑导航
+			{% breadcrumb request %}
+			
+	9. 权限控制到按钮级别
+		{% load rbac %}
+
+		{% if request|has_permission:'add_customer' %}
+			<a href="{% url 'add_customer' %}?{{ query_params }}" class="btn btn-primary btn-sm">添加</a>
+		{% endif %}
+		
+	
+			
+		
+	
+			

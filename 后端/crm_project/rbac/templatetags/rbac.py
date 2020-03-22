@@ -28,12 +28,12 @@ def menu(request):
     
     return {"menu_list": order_dict}
 
-
+#面包屑
 @register.inclusion_tag('rbac/breadcrumb.html')
 def breadcrumb(request):
     return {'breadcrumb_list': request.breadcrumb_list}
 
-
+#控制到按钮级别
 @register.filter
 def has_permission(request, permission):
     if permission in request.session.get(settings.PERMISSION_SESSION_KEY):
