@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+</head>
+<body>
+<p>用户名
+    <input type="text" id="i1">
+</p>
+<p>密码
+    <input type="password" id="i2">
+</p>
+<button id="b1">登录</button>
+<span id="s1"></span>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/static/ajax_setup.js"></script>
+
+<script>
+    $('#b1').click(function(){
+        $.ajax({
+            url:'/login/',
+            type:'post',
+            data:{
+                user:$('#i1').val(),
+                password:$('#i2').val(),
+            },
+            success:function(res){
+            $('#s1').text(res.status)
+            if (res.status ==200){
+                location.href = res.url
+            }
+            else {
+                alert(res.msg)
+            }
+            }
+        })
+    })
+</script>
+</body>
+</html>

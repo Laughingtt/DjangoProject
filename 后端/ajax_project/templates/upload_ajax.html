@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="my_file">
+<button id="b1">上传</button>
+<input type="text" id="i3">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/static/ajax_setup.js"></script>
+
+<script>
+    $('#b1').click(
+        function () {
+            var form_obj = new FormData();
+            form_obj.append('f1', $('#my_file')[0].files[0]);
+
+            $.ajax({
+                url: '/upload/',
+                type: 'post',
+                data: form_obj,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    console.log(res),
+                    $('#i3').val(res)
+                }
+            })
+        }
+    )
+
+</script>
+</body>
+</html>

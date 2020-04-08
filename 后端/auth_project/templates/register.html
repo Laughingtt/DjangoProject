@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="{% static 'reg.css' %}">
+</head>
+<body>
+<div class="di"></div>
+<div class="container">
+    <div class="form">
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            <div class="user">
+                <label for="{{ form_obj.username.id_for_label }}">用户名</label>
+                {{ form_obj.username }}
+            </div>
+            <span id="helpBlock2" class="help-block">{{ form_obj.password.errors.0 }}</span>
+            <div class="pwd">
+                <label for="{{ form_obj.password.id_for_label }}">密码</label>
+                {{ form_obj.password }}
+            </div>
+            <span id="helpBlock2" class="help-block">{{ form_obj.password.errors.0 }}</span>
+
+            <div class="re_pwd">
+                <label for="{{ form_obj.re_password.id_for_label }}">确认密码</label>
+                {{ form_obj.re_password }}
+            </div>
+            <span id="helpBlock2" class="help-block">{{ form_obj.re_password.errors.0 }}</span>
+
+            <div class="button">
+                <button>注册</button>
+            </div>
+            <div>
+                <a href="{% url 'index' %}">返回</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+<script>
+
+    $('input').focus(function () {
+        $(this).next().text('').parent().removeClass('help-block')
+    })
+</script>
+</body>
+</html>

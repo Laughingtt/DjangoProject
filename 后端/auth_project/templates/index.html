@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="post" >
+    {% csrf_token %}
+    {{ login_obj.as_p }}
+    <button>登录</button>
+    <a href="{% url 'register' %}">注册</a>
+    <p>{{ info }}</p>
+</form>
+</body>
+</html>

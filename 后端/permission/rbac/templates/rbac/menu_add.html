@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>修改菜单</h2>
+{% block css %}
+    <style>
+         ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+         ul li {
+            float: left;
+            padding: 10px;
+            padding-left: 0;
+            width: 80px;
+        }
+
+         ul li i {
+            font-size: 18px;
+            margin-left: 5px;
+            color: #6d6565;
+        }
+
+
+    </style>
+{% endblock %}
+<div class="col-md-8" style="margin-left: 20px;">
+    <form action="" method="post" class="form form-horizontal">
+    <div class="form-group">
+        {% csrf_token %}
+        {% for field in form_obj %}
+        <label for="field.id_for_label">{{ field.label }}</label>
+        {{ field }}
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+</div>
+{% endblock %}

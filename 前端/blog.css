@@ -1,0 +1,92 @@
+*{
+margin:0;
+padding:0;
+}
+
+img{
+display:block;
+width:128px;
+height:128px;
+border:5px solid white;
+margin:0 auto;
+border-radius: 50%;
+margin-top:5px;
+}
+/*
+display:block;  转为块级标签
+width:128px;
+height:128px;
+border:5px solid white; 设定边框
+margin:0 auto; 居中排
+border-radius: 50%; 画圆边框
+margin-top:5px; 设定margin
+*/
+.name{
+font-size:20px;
+font-weight:bolder;
+margin-top:10px;
+}
+.text{
+font-size:15px;
+margin-top:10px;
+}
+.left{
+width:20%;
+height:100%;
+background:gray;
+position:fixed;
+text-align:center;
+}
+
+ul{
+margin-top:50px;
+font-weight:bolder;
+}
+
+a{
+text-decoration:none;
+}
+a:hover{
+background-color:red;
+}
+
+li{
+margin-top:10px;
+
+}
+
+.right{
+float:right;
+width:80%;
+background-color:white;
+}
+
+.article{
+margin:5% 10% 5% 10%;
+background-color:orange;
+padding:5%;
+}
+
+.title{
+font-size:20px;
+font-weight:bolder;
+}
+
+.date{
+float:right;
+}
+
+.content{
+clear:right;
+text-indent:20px;
+}
+
+.tag{
+border-top:1px solid black;
+margin-top:40px;
+padding:10px;
+}
+
+div.tag:hover{
+background-color:green;
+}

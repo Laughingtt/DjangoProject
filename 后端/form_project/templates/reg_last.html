@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="content-Type" charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}">
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2" style="margin-top: 70px">
+            <form class="form-horizontal" novalidate action="" method="post">
+                {% csrf_token %}
+
+                <div class="form-group {% if form_obj.username.errors %} has-error {% endif %} ">
+
+
+                    <label for="{{ form_obj.username.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.username.label }}</label>
+                    <div class="col-sm-10">
+
+                        {{ form_obj.username }}
+                        <span id="helpBlock2" class="help-block">{{ form_obj.username.errors.0 }}</span>
+                    </div>
+                </div>
+                <div class="form-group {% if form_obj.password.errors %} has-error {% endif %} ">
+                    <label for="{{ form_obj.password.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.password.label }}</label>
+                    <div class="col-sm-10">
+
+                        {{ form_obj.password }}
+                        <span id="helpBlock2" class="help-block">{{ form_obj.password.errors.0 }}</span>
+                    </div>
+                </div>
+                <div class="form-group {% if form_obj.re_password.errors %} has-error {% endif %}">
+                    <label for="{{ form_obj.re_password.id_for_label }}"
+                           class="col-sm-2 control-label">{{ form_obj.re_password.label }}</label>
+                    <div class="col-sm-10">
+
+                        {{ form_obj.re_password }}
+                        <span id="helpBlock2" class="help-block">{{ form_obj.re_password.errors.0 }}</span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<script>
+
+    $('input').focus(function () {
+        $(this).next().text('').parent().parent().removeClass('has-error')
+    })
+</script>
+
+</body>
+</html>

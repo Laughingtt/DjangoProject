@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>修改角色</h2>
+<div style="margin:10px;">
+    <form action="" method="post" class="form form-inline">
+        {% csrf_token %}
+        {% for field in form_obj %}
+        {{ field }}
+        {% endfor %}
+        <button class="btn btn-success " style="margin-left:10px;">提交</button>
+    </form>
+</div>
+{% endblock %}

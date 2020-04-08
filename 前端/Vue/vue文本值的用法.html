@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./static/vue.min.js"></script>
+</head>
+<body>
+<div id="d1">
+    <!--    <h1 v-text="name"></h1>-->
+    <!--    <div v-html="html"></div>-->
+    <!--    <ul>-->
+    <!--        <li v-for="i in lis">{{ i.name }}</li>-->
+    <!--    </ul>-->
+    <!--    <input type="text" >-->
+    <!--    <div v-if="name == 'tian'">我是田田</div>-->
+    <!--    <div v-else>哈哈</div>-->
+    <!--    <h1 v-show="show">我是好样的</h1>-->
+
+    <!--    <input type="text" v-model="name"/>-->
+    <!--    {{ name }}-->
+    <table>
+        <thead>
+        <tr>
+            <td>学科</td>
+            <td>成绩</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>python</td>
+            <td><input type="text " v-model="python"></td>
+        </tr>
+        <tr>
+            <td>vue</td>
+            <td><input type="text " v-model="vue"></td>
+        </tr>
+        <tr>
+            <td>总成绩</td>
+            <td>{{ sumScore }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    let vm = new Vue({
+        el: "#d1",
+        data: {
+            name: "tian",
+            html: "<h1 >hello 我的第一个Vue值</h1>",
+            lis: [{"name": "tian"}, {"name": "jian"}, {"name": "ying"}],
+            show: true,
+            python:10,
+            vue:111,
+            },
+        computed: {
+                sumScore: function () {
+                    console.log(1);
+                    return Number(this.python) + Number(this.vue);
+                },
+            },
+    })
+</script>
+</body>
+</html>

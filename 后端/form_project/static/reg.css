@@ -1,0 +1,39 @@
+*{
+margin:0;
+padding:0;
+}
+
+
+.container{
+    width:1226px;
+    margin:75px auto;
+}
+
+.form{
+width:500px;
+margin:0 auto;
+
+}
+
+input{
+width:210px;
+height:20px;
+padding:10px;
+margin-top:20px;
+font-size:40px;
+}
+
+label{
+margin-right:30px;
+font-size:25px;
+}
+
+button{
+padding:15px;
+}
+
+.help-block{
+margin-left:100px;
+color:red;
+font-size:15px;
+}

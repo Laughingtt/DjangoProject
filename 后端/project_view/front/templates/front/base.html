@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li>
+                <a href="/">首页</a>
+                <a href="{% url 'front:son' %}">内容</a>
+            </li>
+        </ul>
+        {% endblock sidebar %}
+    </div>
+    <img src="{% static 'images/tian.jpg'%}" alt="">
+    {% block content %}{% endblock content %}
+    <p>哈喽哈喽</p>
+</body>
+</html>
+<!--我是一个注释-->

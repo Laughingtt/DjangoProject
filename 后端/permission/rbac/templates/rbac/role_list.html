@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>角色列表</h2>
+<div style="margin:10px;">
+    <form action="{% url 'rbac:role_add' %}" method="post" class="form form-inline">
+        {% csrf_token %}
+        {% for field in form_obj %}
+        {{ field }}
+        {% endfor %}
+        <button class="btn btn-success " style="margin-left:10px;">添加角色</button>
+    </form>
+</div>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <td>序号</td>
+        <td>角色名</td>
+        <td>编辑</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for role in all_roles %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ role.name }}</td>
+        <td><a href="{% url 'rbac:role_edit' role.id %}"><i class="fa fa-edit"></i></a>|<a
+                href="{% url 'rbac:role_del' role.id %}"><i class="fa fa-trash"></i></a></td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock %}
